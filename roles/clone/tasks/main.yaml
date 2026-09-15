@@ -3,3 +3,6 @@
 
 - name: Clone all repos
   ansible.builtin.include_tasks: clone.yaml
+
+- name: Fix repository permissions
+  ansible.builtin.include_tasks: folder_permissions.yaml

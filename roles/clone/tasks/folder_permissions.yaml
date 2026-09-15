@@ -1,6 +1,8 @@
-- name: Checkout ansible-kubernetes-helm-arc-runner
+- name: Fix folder permissions
   ansible.builtin.file:
     path: "{{ clone_git_folder }}"
+    state: directory
     mode: "0750"
     owner: "{{ clone_user }}"
     group: "{{ clone_user }}"
+    recurse: true
