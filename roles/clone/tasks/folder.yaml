@@ -1,6 +1,6 @@
 - name: Checkout ansible-kubernetes-helm-arc-runner
   ansible.builtin.file:
-    path: "{{ git_folder }}"
+    path: "{{ clone_git_folder }}"
     mode: "0750"
-    owner: "dev"
-    group: "dev"
+    owner: "{{ clone_user }}"
+    group: "{{ clone_user }}"
