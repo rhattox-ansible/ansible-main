@@ -1,0 +1,77 @@
+- name: Checkout ansible-kubernetes-helm-arc-runner
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-arc-runner.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-helm-arc-runner"
+    version: main
+
+- name: Checkout ansible-kubernetes-helm-istio
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-istio.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-helm-istio"
+    version: main
+
+- name: Checkout ansible-kubernetes-helm-argocd
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-argocd.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-helm-argocd"
+    version: main
+
+- name: Checkout ansible-kubernetes-cli-tools
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-cli-tools.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-cli-tools"
+    version: main
+
+- name: Checkout ansible-kubernetes
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes.git"
+    dest: "{{ git_folder }}/ansible-kubernetes"
+    version: main
+
+- name: Checkout ansible-containerd
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-containerd.git"
+    dest: "{{ git_folder }}/ansible-containerd"
+    version: main
+
+- name: Checkout ansible-cluster-configuration
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-cluster-configuration.git"
+    dest: "{{ git_folder }}/ansible-cluster-configuration"
+    version: main
+
+- name: Checkout ansible-containerd-nerdctl
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-containerd-nerdctl.git"
+    dest: "{{ git_folder }}/ansible-containerd-nerdctl"
+    version: main
+
+- name: Checkout ansible-nexus
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-nexus.git"
+    dest: "{{ git_folder }}/ansible-nexus"
+    version: main
+
+- name: Checkout ansible-kubernetes-helm-vault
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-vault.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-helm-vault"
+    version: main
+
+- name: Checkout ansible-kubernetes-helm-monitoring
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-monitoring.git"
+    dest: "{{ git_folder }}/ansible-kubernetes-helm-monitoring"
+    version: main
+
+- name: Checkout ansible-sonarqube
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-sonarqube.git"
+    dest: "{{ git_folder }}/ansible-sonarqube"
+    version: main
+
+- name: Checkout ansible-jenkins
+  ansible.builtin.git:
+    repo: "https://github.com/rhattox-ansible/ansible-jenkins.git"
+    dest: "{{ git_folder }}/ansible-jenkins"
+    version: main

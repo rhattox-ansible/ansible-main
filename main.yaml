@@ -1,0 +1,6 @@
+- name: K8s Installation
+  hosts: localhost
+  become: true
+  gather_facts: true
+  roles:
+    - clone

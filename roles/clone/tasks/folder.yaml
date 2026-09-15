@@ -1,0 +1,6 @@
+- name: Checkout ansible-kubernetes-helm-arc-runner
+  ansible.builtin.file:
+    path: "{{ git_folder }}"
+    mode: "0750"
+    owner: "dev"
+    group: "dev"

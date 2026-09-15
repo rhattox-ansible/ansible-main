@@ -1,0 +1,5 @@
+- name: Create github folder
+  ansible.builtin.include_tasks: folder.yaml
+
+- name: Clone all repos
+  ansible.builtin.include_tasks: clone.yaml
