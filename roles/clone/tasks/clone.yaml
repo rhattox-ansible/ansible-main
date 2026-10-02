@@ -20,7 +20,7 @@
 - name: Checkout repositories that are not already present
   ansible.builtin.git:
     repo: "https://github.com/rhattox-ansible/{{ item.item }}.git"
-    dest: "{{ item.stat.path }}"
+    dest: "{{ clone_git_folder }}/{{ item.item }}"
     version: main
   loop: "{{ clone_repository_status.results }}"
   when: not item.stat.exists
