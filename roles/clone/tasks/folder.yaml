@@ -1,6 +1,7 @@
-- name: Checkout ansible-kubernetes-helm-arc-runner
+- name: Create Folder
   ansible.builtin.file:
     path: "{{ clone_git_folder }}"
+    state: directory
     mode: "0750"
     owner: "{{ clone_user }}"
     group: "{{ clone_user }}"
