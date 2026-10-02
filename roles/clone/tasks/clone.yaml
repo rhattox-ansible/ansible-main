@@ -9,7 +9,7 @@
     - ansible-kubernetes
     - ansible-containerd
     - ansible-cluster-configuration
-    - ansible-containerd-nerdctl
+    - ansible-containerd-cli-tools
     - ansible-nexus
     - ansible-kubernetes-helm-vault
     - ansible-kubernetes-helm-monitoring
