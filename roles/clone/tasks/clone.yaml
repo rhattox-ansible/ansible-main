@@ -1,77 +1,28 @@
-- name: Checkout ansible-kubernetes-helm-arc-runner
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-arc-runner.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-helm-arc-runner"
-    version: main
+- name: Check whether each repository directory already exists
+  ansible.builtin.stat:
+    path: "{{ clone_git_folder }}/{{ item }}"
+  loop:
+    - ansible-kubernetes-helm-arc-runner
+    - ansible-kubernetes-helm-istio
+    - ansible-kubernetes-helm-argocd
+    - ansible-kubernetes-cli-tools
+    - ansible-kubernetes
+    - ansible-containerd
+    - ansible-cluster-configuration
+    - ansible-containerd-nerdctl
+    - ansible-nexus
+    - ansible-kubernetes-helm-vault
+    - ansible-kubernetes-helm-monitoring
+    - ansible-sonarqube
+    - ansible-jenkins
+  register: clone_repository_status
 
-- name: Checkout ansible-kubernetes-helm-istio
+- name: Checkout repositories that are not already present
   ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-istio.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-helm-istio"
+    repo: "https://github.com/rhattox-ansible/{{ item.item }}.git"
+    dest: "{{ item.stat.path }}"
     version: main
-
-- name: Checkout ansible-kubernetes-helm-argocd
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-argocd.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-helm-argocd"
-    version: main
-
-- name: Checkout ansible-kubernetes-cli-tools
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-cli-tools.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-cli-tools"
-    version: main
-
-- name: Checkout ansible-kubernetes
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes"
-    version: main
-
-- name: Checkout ansible-containerd
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-containerd.git"
-    dest: "{{ clone_git_folder }}/ansible-containerd"
-    version: main
-
-- name: Checkout ansible-cluster-configuration
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-cluster-configuration.git"
-    dest: "{{ clone_git_folder }}/ansible-cluster-configuration"
-    version: main
-
-- name: Checkout ansible-containerd-nerdctl
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-containerd-nerdctl.git"
-    dest: "{{ clone_git_folder }}/ansible-containerd-nerdctl"
-    version: main
-
-- name: Checkout ansible-nexus
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-nexus.git"
-    dest: "{{ clone_git_folder }}/ansible-nexus"
-    version: main
-
-- name: Checkout ansible-kubernetes-helm-vault
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-vault.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-helm-vault"
-    version: main
-
-- name: Checkout ansible-kubernetes-helm-monitoring
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-kubernetes-helm-monitoring.git"
-    dest: "{{ clone_git_folder }}/ansible-kubernetes-helm-monitoring"
-    version: main
-
-- name: Checkout ansible-sonarqube
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-sonarqube.git"
-    dest: "{{ clone_git_folder }}/ansible-sonarqube"
-    version: main
-
-- name: Checkout ansible-jenkins
-  ansible.builtin.git:
-    repo: "https://github.com/rhattox-ansible/ansible-jenkins.git"
-    dest: "{{ clone_git_folder }}/ansible-jenkins"
-    version: main
+  loop: "{{ clone_repository_status.results }}"
+  when: not item.stat.exists
+  loop_control:
+    label: "{{ item.item }}"
