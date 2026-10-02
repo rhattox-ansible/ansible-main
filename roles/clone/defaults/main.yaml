@@ -1,2 +1,2 @@
-clone_git_folder: "/home/dev/rhattox-ansible"
-clone_user: dev
+clone_user: "{{ ansible_env.SUDO_USER }}"
+clone_git_folder: "/home/{{ clone_user }}/rhattox-ansible"
